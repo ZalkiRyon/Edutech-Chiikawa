@@ -39,7 +39,7 @@
         <spring-boot.version>3.5.0</spring-boot.version>                           <!-- Versión de Spring Boot base para microservicios -->
         <spring-cloud.version>2025.0.0</spring-cloud.version>                      <!-- Versión de Spring Cloud para herramientas como Eureka, Config Server, Gateway, etc. -->
         <mapstruct.version>1.5.5.Final</mapstruct.version>                         <!-- Versión de MapStruct, útil para generar mapeos automáticos entre DTOs y entidades -->
-        <lombok.version>1.18.30</lombok.version>                                   <!-- Versión de Lombok, evita escribir constructores, getters/setters manualmente -->
+        <lombok.version>1.18.32</lombok.version>                                   <!-- Versión de Lombok, evita escribir constructores, getters/setters manualmente -->
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>     <!-- Versión de Jakarta Validation (Bean Validation API) -->
         <mysql-connector-j.version>8.4.0</mysql-connector-j.version>               <!-- Versión de MySQL -->
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>     <!-- Versión de Hibernate Validator (compatible con Jakarta Validation 3.0+) -->

@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import org.springframework.hateoas.EntityModel;
+
 @RestController
 @RequestMapping("/api/course-categories")
 @RequiredArgsConstructor
@@ -41,5 +45,13 @@ public class CourseCategoryController {
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         categService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}/hateoas")
+    public EntityModel<CourseCategoryDTO> findByIdWithHateoas(@PathVariable Integer id) {
+        CourseCategoryDTO category = categService.findById(id);
+        EntityModel<CourseCategoryDTO> resource = EntityModel.of(category);
+        resource.add(linkTo(methodOn(CourseCategoryController.class).findByIdWithHateoas(id)).withSelfRel());
+        return resource;
     }
 }

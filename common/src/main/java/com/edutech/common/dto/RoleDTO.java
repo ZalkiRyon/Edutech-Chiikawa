@@ -17,4 +17,14 @@ public class RoleDTO {
     @NotBlank(message = "La descripción del rol es obligatoria.")
     @Size(max = 800, message = "La descripción del rol no puede exceder los 800 caracteres.")
     private String description;
+
+    private boolean active;
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 }
