@@ -33,7 +33,7 @@
     -->
     <properties>
         <com-edutech-common.version>1.0-SNAPSHOT</com-edutech-common.version>      <!-- Versión de biblioteca common -->
-        <java.version>21</java.version>                                            <!-- Versión de Java a utilizar (21 incluye mejoras de rendimiento y compatibilidad con Spring Boot 3) -->
+        <java.version>17</java.version>                                            <!-- Versión de Java a utilizar (21 incluye mejoras de rendimiento y compatibilidad con Spring Boot 3) -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>         <!-- Codificación usada al compilar archivos fuente -->
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding> <!-- Codificación usada en los reportes generados por Maven -->
         <spring-boot.version>3.5.0</spring-boot.version>                           <!-- Versión de Spring Boot base para microservicios -->

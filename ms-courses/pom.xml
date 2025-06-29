@@ -71,7 +71,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.30</version>
+            <version>1.18.32</version>
             <scope>provided</scope> <!-- No se empaqueta, solo se usa en compilación -->
         </dependency>
 
@@ -172,9 +172,12 @@
 		            <path>
 		                <groupId>org.projectlombok</groupId>
 		                <artifactId>lombok</artifactId>
-		                <version>1.18.30</version>
+		                <version>1.18.32</version>
 		            </path>
 		            </annotationProcessorPaths>
+                    <compilerArgs>
+                        <arg>-Amapstruct.verbose=true</arg>
+                    </compilerArgs>
 		        </configuration>
 	        </plugin>
 	    </plugins>
