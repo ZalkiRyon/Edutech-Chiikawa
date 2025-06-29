@@ -196,6 +196,7 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+                <scope>provided</scope>
             </dependency>
 
             <!-- 
@@ -328,27 +329,20 @@
                     -->
                     <compilerArgs>
                         <arg>-parameters</arg>
+                        <!-- Configuración adicional para MapStruct y Lombok -->
+                        <arg>-Amapstruct.defaultComponentModel=spring</arg>
+                        <arg>-Amapstruct.unmappedTargetPolicy=IGNORE</arg>
                     </compilerArgs>
                     <!-- Esta línea es para que el IDE detecte correctamente el código generado -->
                     <generatedSourcesDirectory>${project.build.directory}/generated-sources/annotations</generatedSourcesDirectory>
 
                     <!-- 
                         Procesadores de anotaciones que deben ejecutarse durante la compilación.
-                        Son necesarios para herramientas como MapStruct y Lombok que generan clases automáticamente.
+                        IMPORTANTE: El orden es crucial - Lombok debe ejecutarse ANTES que MapStruct
+                        para que MapStruct pueda ver las propiedades generadas por Lombok.
                     -->
                     <annotationProcessorPaths>
                         
-                        <!-- 
-                            Procesador de MapStruct: genera clases de implementación para interfaces con @Mapper.
-                            Ejemplo: 
-                                UsuarioMapper.java → UsuarioMapperImpl.java (autogenerado)
-                        -->
-                        <path>
-                            <groupId>org.mapstruct</groupId>
-                            <artifactId>mapstruct-processor</artifactId>
-                            <version>${mapstruct.version}</version>
-                        </path>
-
                         <!-- 
                             Procesador de anotaciones de Lombok:
                             Genera automáticamente métodos como:
@@ -356,11 +350,35 @@
                             - Constructores (@NoArgsConstructor, @AllArgsConstructor)
                             - Builder (@Builder)
                             - toString, equals, hashCode (@Data)
+                            
+                            DEBE ir PRIMERO para que MapStruct pueda detectar las propiedades generadas.
                         -->
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
-                            <version>${lombok.version}</version>
+                            <version>1.18.32</version>
+                        </path>
+                        
+                        <!-- 
+                            Procesador de MapStruct: genera clases de implementación para interfaces con @Mapper.
+                            Ejemplo: 
+                                UsuarioMapper.java → UsuarioMapperImpl.java (autogenerado)
+                            
+                            DEBE ir DESPUÉS de Lombok para poder acceder a las propiedades generadas.
+                        -->
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>1.5.5.Final</version>
+                        </path>
+                        
+                        <!-- 
+                            Combinación especial para resolver conflictos Lombok-MapStruct
+                        -->
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok-mapstruct-binding</artifactId>
+                            <version>0.2.0</version>
                         </path>
 
                     </annotationProcessorPaths>
