@@ -116,18 +116,20 @@
             <optional>true</optional> <!-- Indica que es opcional: no se transita a otros módulos ni se empaqueta por defecto -->
         </dependency>
 
-        <!-- Springfox: para generar documentación Swagger -->
+        <!-- SpringDoc OpenAPI para generar documentación Swagger -->
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-            <version>3.0.0</version>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.7.0</version>
         </dependency>
 
         <!-- Spring HATEOAS: Soporte para HATEOAS en el microservicio -->
+        <!-- Temporalmente comentado debido a conflictos con SpringDoc OpenAPI
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-hateoas</artifactId>
         </dependency>
+        -->
 
     </dependencies>
 

@@ -21,6 +21,14 @@ spring:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
 
+# Configuración de SpringDoc OpenAPI para Swagger UI
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui/index.html
+    enabled: true
+
 eureka:
   client:
     register-with-eureka: true

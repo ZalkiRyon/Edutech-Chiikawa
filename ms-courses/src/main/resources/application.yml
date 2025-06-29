@@ -21,6 +21,17 @@ spring:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
 
+# Configuración de SpringDoc OpenAPI para Swagger UI
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui/index.html
+  # Deshabilitar la integración automática con HATEOAS para evitar conflictos
+  use-fqn: true
+
 eureka:
   client:
     register-with-eureka: true
@@ -30,5 +41,5 @@ eureka:
   instance:
     prefer-ip-address: true
     instance-id: "${spring.application.name}:${random.value}"
-    lease-renewal-interval-in-seconds: 15    # Cada cuántos segundos el cliente envía “heartbeat”
+    lease-renewal-interval-in-seconds: 15    # Cada cuántos segundos el cliente envía "heartbeat"
     lease-expiration-duration-in-seconds: 60 # Después de cuántos segundos sin renovar, se considera DOWN
