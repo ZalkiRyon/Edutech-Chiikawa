@@ -30,6 +30,12 @@
     <!-- Dependencias necesarias para este microservicio -->
     <dependencies>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+
         <!-- Módulo común con DTOs, excepciones, utilidades, etc. -->
         <dependency>
             <groupId>com.edutech</groupId>
@@ -64,6 +70,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
             <scope>provided</scope> <!-- No se empaqueta, solo se usa en compilación -->
         </dependency>
 
@@ -108,7 +115,28 @@
             <optional>true</optional> <!-- Indica que es opcional: no se transita a otros módulos ni se empaqueta por defecto -->
         </dependency>
 
+        <!-- Springfox: para generar documentación Swagger -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
+        <!-- Spring HATEOAS: Soporte para HATEOAS en el microservicio -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-hateoas</artifactId>
+        </dependency>
+
     </dependencies>
+
+    <!-- Propiedades del proyecto -->
+    <properties>
+        <!-- Configuración de la versión de Java para garantizar compatibilidad -->
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.release>17</maven.compiler.release>
+    </properties>
 
     <!-- Empaquetado ejecutable con Spring Boot -->
     <build>
@@ -132,8 +160,9 @@
 		        <plugin>
 		        <groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-compiler-plugin</artifactId>
+		        <version>3.11.0</version>
 		        <configuration>
-		            <parameters>true</parameters>
+		            <release>17</release>
 		            <annotationProcessorPaths>
 		            <path>
 		                <groupId>org.mapstruct</groupId>
@@ -142,6 +171,7 @@
 		            <path>
 		                <groupId>org.projectlombok</groupId>
 		                <artifactId>lombok</artifactId>
+		                <version>1.18.30</version>
 		            </path>
 		            </annotationProcessorPaths>
 		        </configuration>

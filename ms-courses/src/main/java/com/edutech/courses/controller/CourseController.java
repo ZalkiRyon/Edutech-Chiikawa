@@ -8,6 +8,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+
 import java.util.List;
 
 @RestController
@@ -41,5 +44,13 @@ public class CourseController {
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         courseService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}/hateoas")
+    public EntityModel<CourseDTO> findByIdWithHateoas(@PathVariable Integer id) {
+        CourseDTO course = courseService.findById(id);
+        EntityModel<CourseDTO> resource = EntityModel.of(course);
+        resource.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(CourseController.class).findByIdWithHateoas(id)).withSelfRel());
+        return resource;
     }
 }

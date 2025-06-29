@@ -108,6 +108,13 @@
             <optional>true</optional> <!-- Indica que es opcional: no se transita a otros módulos ni se empaqueta por defecto -->
         </dependency>
 
+        <!-- Springfox: para generar documentación Swagger -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
     </dependencies>
 
     <!-- Empaquetado ejecutable con Spring Boot -->

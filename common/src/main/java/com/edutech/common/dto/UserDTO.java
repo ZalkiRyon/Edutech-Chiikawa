@@ -37,4 +37,7 @@ public class UserDTO {
     @NotNull(message = "La fecha de última actualización es obligatoria.")
     private Instant updatedAt;
 
+    public Boolean isActive() {
+        return this.isActive;
+    }
 }
